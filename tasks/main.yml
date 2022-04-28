@@ -1,0 +1,10 @@
+---
+- name: Check files directory exists
+  file:
+    name: files/
+    state: directory
+  run_once: true
+  delegate_to: localhost
+- include_tasks: upload_rpm.yml
+- include_tasks: install_yum.yml
+- import_tasks: configure.yml
