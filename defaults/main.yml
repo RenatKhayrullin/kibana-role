@@ -1,4 +1,5 @@
 ---
 kibana_version: "7.16.2"
-kibana_package: "kibana-{{ kibana_version }}-x86_64.rpm"
+kibana_package_rpm: "kibana-{{ kibana_version }}-x86_64.rpm"
+kibana_package_deb: "kibana-{{ kibana_version }}-amd64.deb"
 kibana_install_type: remote

@@ -1,7 +1,7 @@
 ---
 - name: Upload Kibana .rpm file containing binaries from local storage
   copy:
-    src: "{{ kibana_package }}"
+    src: "{{ kibana_package_rpm }}"
     dest: "/tmp/kibana-{{ kibana_version }}-x86_64.rpm"
   register: download_kibana_binaries
   until: download_kibana_binaries is succeeded

@@ -1,0 +1,20 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: Install iproute2 on ubuntu to gather facts properly
+      # https://stackoverflow.com/questions/41469740/ansible-default-ipv4-address-undefined-in-docker-ubuntu
+      block:
+        - name: install iproute
+          apt:
+            name: iproute2
+            state: present
+        - name: Recollect facts
+          ansible.builtin.setup:
+            gather_subset:
+              - all
+        - debug: msg="{{ hostvars[inventory_hostname]['ansible_all_ipv4_addresses'] }}"
+      when: ansible_distribution == "Ubuntu"
+    - name: "Include kibana-role"
+      include_role:
+        name: "kibana-role"

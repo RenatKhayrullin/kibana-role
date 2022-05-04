@@ -1,0 +1,7 @@
+---
+- name: Upload Kibana .deb file containing binaries from local storage
+  copy:
+    src: "{{ kibana_package_deb }}"
+    dest: "/tmp/kibana-{{ kibana_version }}-amd64.deb"
+  register: download_kibana_binaries
+  until: download_kibana_binaries is succeeded

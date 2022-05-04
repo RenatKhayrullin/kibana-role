@@ -5,6 +5,7 @@
     state: directory
   run_once: true
   delegate_to: localhost
-- include_tasks: upload_rpm.yml
-- include_tasks: install_yum.yml
+- include_tasks: "upload_{{ ansible_facts.pkg_mgr }}.yml"
+- include_tasks: "install_{{ ansible_facts.pkg_mgr }}.yml"
 - import_tasks: configure.yml
+  when: hostvars['el-instance'] is defined

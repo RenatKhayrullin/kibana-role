@@ -37,6 +37,7 @@ terraform.rc
 
 *.tar.gz
 *.rpm
+*.deb
 
 **/roles/
 /ansible
